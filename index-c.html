@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Owen Mulhern — Climate Communications</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:        #f4f2ef;
+  --bg2:       #eceae6;
+  --bg3:       #e4e1dc;
+  --white:     #ffffff;
+  --ink:       #111110;
+  --ink-soft:  #3a3935;
+  --muted:     #888580;
+  --rust:      #c04a22;
+  --rust-dim:  #9a3a18;
+  --rust-pale: rgba(192,74,34,0.08);
+  --border:    rgba(17,17,16,0.09);
+  --border2:   rgba(17,17,16,0.05);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 200;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2.5rem;
+  height: 56px;
+  background: rgba(244,242,239,0.82);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-logo {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 0.88rem;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+.nav-links {
+  display: flex;
+  gap: 0.25rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--muted);
+  text-decoration: none;
+  padding: 0.4rem 0.85rem;
+  border-radius: 100px;
+  transition: background 0.15s, color 0.15s;
+}
+
+.nav-links a:hover {
+  background: var(--bg3);
+  color: var(--ink);
+}
+
+/* ── HERO ── */
+.hero {
+  padding: 56px 2.5rem 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-main {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  padding: 5rem 0 4rem;
+}
+
+.hero-left {}
+
+.hero-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 0.3rem 0.85rem 0.3rem 0.5rem;
+  margin-bottom: 2.5rem;
+  opacity: 0;
+  animation: fadeUp 0.5s ease forwards 0.1s;
+}
+
+.hero-label-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--rust);
+  flex-shrink: 0;
+}
+
+.hero-label-text {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.hero-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(2.8rem, 5vw, 5rem);
+  font-weight: 700;
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: fadeUp 0.6s ease forwards 0.2s;
+}
+
+.hero-title .accent { color: var(--rust); }
+
+.hero-sub {
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--ink-soft);
+  line-height: 1.75;
+  max-width: 420px;
+  margin-bottom: 2.5rem;
+  opacity: 0;
+  animation: fadeUp 0.6s ease forwards 0.35s;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  opacity: 0;
+  animation: fadeUp 0.5s ease forwards 0.5s;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--ink);
+  color: var(--white);
+  padding: 0.75rem 1.5rem;
+  border-radius: 100px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.15s, transform 0.15s;
+  letter-spacing: -0.01em;
+}
+
+.btn-primary:hover { background: var(--rust); transform: translateY(-1px); }
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 400;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.btn-ghost:hover { color: var(--ink); }
+
+/* Hero right — viz card */
+.hero-right {
+  opacity: 0;
+  animation: fadeUp 0.7s ease forwards 0.4s;
+}
+
+.hero-viz-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.04), 0 8px 32px rgba(0,0,0,0.06);
+}
+
+.viz-card-header {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.viz-card-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+
+.viz-card-tag {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--rust);
+  background: var(--rust-pale);
+  padding: 0.2rem 0.6rem;
+  border-radius: 100px;
+}
+
+.viz-card-body {
+  padding: 1.25rem;
+  background: var(--bg2);
+}
+
+.viz-card-body svg { width: 100%; height: auto; display: block; }
+
+.viz-card-caption {
+  padding: 0.9rem 1.25rem;
+  font-size: 0.75rem;
+  color: var(--muted);
+  font-weight: 300;
+  border-top: 1px solid var(--border2);
+}
+
+/* Hero strip */
+.hero-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--border);
+  margin: 0 -2.5rem;
+  padding: 0 2.5rem;
+}
+
+.strip-item {
+  padding: 1.5rem 0;
+  border-right: 1px solid var(--border);
+  opacity: 0;
+}
+
+.strip-item:last-child { border-right: none; padding-left: 2rem; }
+.strip-item:not(:first-child) { padding-left: 2rem; }
+
+.strip-item:nth-child(1) { animation: fadeUp 0.4s ease forwards 0.7s; }
+.strip-item:nth-child(2) { animation: fadeUp 0.4s ease forwards 0.8s; }
+.strip-item:nth-child(3) { animation: fadeUp 0.4s ease forwards 0.9s; }
+.strip-item:nth-child(4) { animation: fadeUp 0.4s ease forwards 1.0s; }
+
+.strip-val {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 0.2rem;
+}
+
+.strip-label {
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+/* ── ABOUT ── */
+.about {
+  padding: 6rem 2.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+  border-top: 1px solid var(--border);
+}
+
+.section-tag {
+  display: inline-block;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--rust);
+  margin-bottom: 1.5rem;
+}
+
+.about-headline {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(1.8rem, 2.8vw, 2.8rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 1.75rem;
+  color: var(--ink);
+}
+
+.about-body {
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: var(--ink-soft);
+  line-height: 1.85;
+  margin-bottom: 1.1rem;
+}
+
+.about-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.about-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.1rem 1.25rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.about-card-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--rust-pale);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 0.85rem;
+  color: var(--rust);
+}
+
+.about-card-content {}
+
+.about-card-label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.15rem;
+}
+
+.about-card-val {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+
+/* ── WORK ── */
+.work {
+  padding: 6rem 2.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.work-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 2.5rem;
+}
+
+.work-headline {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(1.8rem, 2.8vw, 2.8rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--ink);
+}
+
+.work-sub {
+  font-size: 0.88rem;
+  color: var(--muted);
+  font-weight: 300;
+  max-width: 280px;
+  text-align: right;
+  line-height: 1.5;
+}
+
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.work-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: default;
+}
+
+.work-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.04), 0 16px 48px rgba(0,0,0,0.08);
+}
+
+.work-card-thumb {
+  width: 100%;
+  background: var(--bg2);
+  aspect-ratio: 16/9;
+  overflow: hidden;
+}
+
+.work-card-thumb svg { width: 100%; height: 100%; }
+
+.work-card-body { padding: 1.25rem; }
+
+.work-card-tag {
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--rust);
+  margin-bottom: 0.4rem;
+}
+
+.work-card-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+  line-height: 1.25;
+}
+
+.work-card-desc {
+  font-size: 0.82rem;
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.work-card-footer {
+  padding: 0.85rem 1.25rem;
+  border-top: 1px solid var(--border2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.work-card-org {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.work-card-arrow {
+  font-size: 0.8rem;
+  color: var(--bg3);
+  transition: color 0.15s, transform 0.15s;
+}
+
+.work-card:hover .work-card-arrow {
+  color: var(--rust);
+  transform: translate(2px, -2px);
+}
+
+/* ── SERVICES ── */
+.services {
+  padding: 6rem 2.5rem;
+  border-top: 1px solid var(--border);
+  background: var(--white);
+}
+
+.services-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: end;
+  margin-bottom: 3rem;
+}
+
+.services-headline {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(1.8rem, 2.8vw, 2.8rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--ink);
+}
+
+.services-sub {
+  font-size: 0.92rem;
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.service-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.75rem 1.5rem;
+  transition: background 0.15s, border-color 0.15s;
+  position: relative;
+}
+
+.service-card:hover {
+  background: var(--white);
+  border-color: var(--rust);
+}
+
+.service-num {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--rust);
+  letter-spacing: 0.04em;
+  margin-bottom: 1.25rem;
+}
+
+.service-name {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 0.75rem;
+  line-height: 1.25;
+}
+
+.service-desc {
+  font-size: 0.82rem;
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+/* ── CONTACT ── */
+.contact {
+  padding: 6rem 2.5rem;
+  border-top: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+.contact-headline {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(1.8rem, 2.8vw, 2.8rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--ink);
+  margin-bottom: 1rem;
+}
+
+.contact-headline .accent { color: var(--rust); }
+
+.contact-body {
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: var(--ink-soft);
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+.contact-links { display: flex; flex-direction: column; gap: 0.6rem; }
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.9rem 1.1rem;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  text-decoration: none;
+  color: var(--ink);
+  font-size: 0.88rem;
+  font-weight: 400;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.contact-link:hover { border-color: var(--rust); background: #fdf8f6; }
+
+.contact-link-label {
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--rust);
+  width: 60px;
+  flex-shrink: 0;
+}
+
+/* Form */
+.form-row { margin-bottom: 1rem; }
+
+.form-label {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.4rem;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 400;
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.15s;
+  resize: none;
+  -webkit-appearance: none;
+}
+
+.form-input:focus, .form-textarea:focus { border-color: var(--rust); }
+.form-textarea { height: 120px; }
+
+.form-btn {
+  width: 100%;
+  background: var(--ink);
+  color: var(--white);
+  border: none;
+  border-radius: 100px;
+  padding: 0.9rem 1.5rem;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  transition: background 0.15s;
+  margin-top: 0.5rem;
+}
+
+.form-btn:hover { background: var(--rust); }
+
+/* ── FOOTER ── */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 1.5rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+footer span, footer a {
+  font-size: 0.72rem;
+  color: var(--muted);
+  font-weight: 400;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+footer a:hover { color: var(--ink); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible { opacity: 1; transform: none; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 960px) {
+  .hero-main { grid-template-columns: 1fr; padding: 3rem 0 2.5rem; }
+  .hero-strip { grid-template-columns: 1fr 1fr; }
+  .about { grid-template-columns: 1fr; padding: 4rem 1.5rem; gap: 3rem; }
+  .work-grid { grid-template-columns: 1fr; }
+  .work-header { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+  .work-sub { text-align: left; max-width: 100%; }
+  .services-grid { grid-template-columns: 1fr 1fr; }
+  .services-header { grid-template-columns: 1fr; }
+  .contact { grid-template-columns: 1fr; padding: 4rem 1.5rem; }
+  nav { padding: 0 1.5rem; }
+  .hero, .work, .services { padding-left: 1.5rem; padding-right: 1.5rem; }
+  footer { padding: 1.5rem; flex-direction: column; gap: 0.4rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-logo">Owen Mulhern</span>
+  <ul class="nav-links">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-main">
+    <div class="hero-left">
+      <div class="hero-label">
+        <span class="hero-label-dot"></span>
+        <span class="hero-label-text">Climate Communications</span>
+      </div>
+      <h1 class="hero-title">
+        Making climate<br>science <span class="accent">impossible</span><br>to ignore
+      </h1>
+      <p class="hero-sub">
+        I help climate tech companies turn complex research into narrative that builds investor confidence, earns press coverage, and moves audiences — from strategy through to execution.
+      </p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">Work with me ↗</a>
+        <a href="#work" class="btn-ghost">See the work →</a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-viz-card">
+        <div class="viz-card-header">
+          <span class="viz-card-title">Emission reduction options by speed &amp; cost savings</span>
+          <span class="viz-card-tag">Data viz</span>
+        </div>
+        <div class="viz-card-body">
+          <svg viewBox="0 0 480 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Grid lines -->
+            <line x1="55" y1="20" x2="55" y2="260" stroke="#e4e1dc" stroke-width="1"/>
+            <line x1="155" y1="20" x2="155" y2="260" stroke="#e4e1dc" stroke-width="1"/>
+            <line x1="255" y1="20" x2="255" y2="260" stroke="#e4e1dc" stroke-width="1"/>
+            <line x1="355" y1="20" x2="355" y2="260" stroke="#e4e1dc" stroke-width="1"/>
+            <line x1="455" y1="20" x2="455" y2="260" stroke="#e4e1dc" stroke-width="1"/>
+            <line x1="45" y1="60" x2="465" y2="60" stroke="#e4e1dc" stroke-width="1"/>
+            <line x1="45" y1="120" x2="465" y2="120" stroke="#e4e1dc" stroke-width="1"/>
+            <line x1="45" y1="180" x2="465" y2="180" stroke="#e4e1dc" stroke-width="1"/>
+            <line x1="45" y1="240" x2="465" y2="240" stroke="#e4e1dc" stroke-width="1"/>
+            <!-- Axes -->
+            <line x1="45" y1="260" x2="468" y2="260" stroke="#3a3935" stroke-width="1.5"/>
+            <line x1="45" y1="20" x2="45" y2="262" stroke="#3a3935" stroke-width="1.5"/>
+            <!-- Axis labels -->
+            <text x="256" y="282" fill="#888580" font-family="sans-serif" font-size="9" text-anchor="middle" letter-spacing="0.5">SPEED OF IMPACT →</text>
+            <text x="16" y="145" fill="#888580" font-family="sans-serif" font-size="9" text-anchor="middle" letter-spacing="0.5" transform="rotate(-90 16 145)">COST SAVINGS →</text>
+            <!-- Scattered bubbles -->
+            <circle cx="100" cy="220" r="12" fill="rgba(192,74,34,0.12)" stroke="rgba(192,74,34,0.3)" stroke-width="1"/>
+            <circle cx="165" cy="190" r="9" fill="rgba(192,74,34,0.12)" stroke="rgba(192,74,34,0.3)" stroke-width="1"/>
+            <circle cx="210" cy="165" r="16" fill="rgba(192,74,34,0.12)" stroke="rgba(192,74,34,0.3)" stroke-width="1"/>
+            <circle cx="145" cy="130" r="7" fill="rgba(192,74,34,0.12)" stroke="rgba(192,74,34,0.3)" stroke-width="1"/>
+            <circle cx="290" cy="155" r="11" fill="rgba(192,74,34,0.12)" stroke="rgba(192,74,34,0.3)" stroke-width="1"/>
+            <circle cx="245" cy="200" r="8" fill="rgba(192,74,34,0.12)" stroke="rgba(192,74,34,0.3)" stroke-width="1"/>
+            <circle cx="330" cy="180" r="14" fill="rgba(192,74,34,0.12)" stroke="rgba(192,74,34,0.3)" stroke-width="1"/>
+            <circle cx="375" cy="140" r="10" fill="rgba(192,74,34,0.12)" stroke="rgba(192,74,34,0.3)" stroke-width="1"/>
+            <circle cx="190" cy="100" r="13" fill="rgba(192,74,34,0.12)" stroke="rgba(192,74,34,0.3)" stroke-width="1"/>
+            <circle cx="310" cy="110" r="8" fill="rgba(192,74,34,0.12)" stroke="rgba(192,74,34,0.3)" stroke-width="1"/>
+            <!-- Hero bubble — landfill top right -->
+            <circle cx="432" cy="52" r="28" fill="rgba(192,74,34,0.1)" stroke="#c04a22" stroke-width="1.5"/>
+            <circle cx="432" cy="52" r="5" fill="#c04a22"/>
+            <!-- Annotation -->
+            <line x1="406" y1="44" x2="368" y2="36" stroke="rgba(192,74,34,0.4)" stroke-width="1" stroke-dasharray="3,2"/>
+            <text x="362" y="32" fill="#c04a22" font-family="sans-serif" font-size="8.5" text-anchor="end" font-weight="500">Landfill management</text>
+            <text x="362" y="43" fill="#888580" font-family="sans-serif" font-size="7.5" text-anchor="end">Works now · Saves money</text>
+          </svg>
+        </div>
+        <div class="viz-card-caption">Project Drawdown solution analysis · 2025</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-strip">
+    <div class="strip-item">
+      <div class="strip-val">2yr</div>
+      <div class="strip-label">Head of Data Viz<br>Earth.Org</div>
+    </div>
+    <div class="strip-item">
+      <div class="strip-val">MSc</div>
+      <div class="strip-label">Molecular Medicine<br>Imperial College London</div>
+    </div>
+    <div class="strip-item">
+      <div class="strip-val">3yr</div>
+      <div class="strip-label">Growth Strategy<br>Tech & Media</div>
+    </div>
+    <div class="strip-item">
+      <div class="strip-val">Seed→B</div>
+      <div class="strip-label">Climate tech focus<br>Founder-first approach</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="reveal">
+    <span class="section-tag">About</span>
+    <h2 class="about-headline">The gap between great science and market traction</h2>
+    <p class="about-body">Most climate tech companies are sitting on genuinely important science. Very few have anyone who can turn it into the kind of narrative that moves investors, journalists, and customers to act.</p>
+    <p class="about-body">I close that gap. With a background spanning molecular medicine, data journalism, and growth strategy, I work at the intersection of scientific rigour and commercial communication.</p>
+    <p class="about-body">Based in Ho Chi Minh City. Working globally.</p>
+  </div>
+  <div class="about-cards reveal">
+    <div class="about-card">
+      <div class="about-card-icon">🎓</div>
+      <div class="about-card-content">
+        <div class="about-card-label">Education</div>
+        <div class="about-card-val">MSc Molecular Medicine · Imperial College London</div>
+      </div>
+    </div>
+    <div class="about-card">
+      <div class="about-card-icon">🌍</div>
+      <div class="about-card-content">
+        <div class="about-card-label">Former role</div>
+        <div class="about-card-val">Head of Data Visualisation · Earth.Org</div>
+      </div>
+    </div>
+    <div class="about-card">
+      <div class="about-card-icon">📈</div>
+      <div class="about-card-content">
+        <div class="about-card-label">Growth experience</div>
+        <div class="about-card-val">Semrush · Verofax · KillB · 6k newsletter</div>
+      </div>
+    </div>
+    <div class="about-card">
+      <div class="about-card-icon">💡</div>
+      <div class="about-card-content">
+        <div class="about-card-label">Current</div>
+        <div class="about-card-val">Advisor · Bouken Capital · Science journalist</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section class="work" id="work">
+  <div class="work-header reveal">
+    <div>
+      <span class="section-tag">Selected Work</span>
+      <h2 class="work-headline">Complex problems,<br>clear narrative</h2>
+    </div>
+    <p class="work-sub">Add your real pieces here as they come in. These are placeholders.</p>
+  </div>
+
+  <div class="work-grid">
+    <div class="work-card reveal">
+      <div class="work-card-thumb">
+        <svg viewBox="0 0 400 225" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="225" fill="#eceae6"/>
+          <line x1="40" y1="185" x2="375" y2="185" stroke="#d5d2cc" stroke-width="1"/>
+          <line x1="40" y1="30" x2="40" y2="187" stroke="#d5d2cc" stroke-width="1"/>
+          <circle cx="85" cy="160" r="9" fill="rgba(192,74,34,0.15)" stroke="#c04a22" stroke-width="1"/>
+          <circle cx="135" cy="138" r="7" fill="rgba(192,74,34,0.15)" stroke="#c04a22" stroke-width="1"/>
+          <circle cx="185" cy="120" r="12" fill="rgba(192,74,34,0.15)" stroke="#c04a22" stroke-width="1"/>
+          <circle cx="240" cy="100" r="8" fill="rgba(192,74,34,0.15)" stroke="#c04a22" stroke-width="1"/>
+          <circle cx="290" cy="82" r="10" fill="rgba(192,74,34,0.15)" stroke="#c04a22" stroke-width="1"/>
+          <circle cx="345" cy="50" r="22" fill="rgba(192,74,34,0.1)" stroke="#c04a22" stroke-width="1.5"/>
+          <circle cx="345" cy="50" r="4" fill="#c04a22"/>
+          <text x="200" y="210" fill="#888580" font-family="sans-serif" font-size="8" text-anchor="middle" letter-spacing="0.5">SPEED OF IMPACT →</text>
+        </svg>
+      </div>
+      <div class="work-card-body">
+        <p class="work-card-tag">Data Viz · Concept</p>
+        <h3 class="work-card-title">Emission reduction options that work now and save money</h3>
+        <p class="work-card-desc">Cost vs. speed quadrant placing landfill management as the standout quick-win for climate-focused organisations.</p>
+      </div>
+      <div class="work-card-footer">
+        <span class="work-card-org">Project Drawdown · 2025</span>
+        <span class="work-card-arrow">↗</span>
+      </div>
+    </div>
+
+    <div class="work-card reveal">
+      <div class="work-card-thumb">
+        <svg viewBox="0 0 400 225" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="225" fill="#eceae6"/>
+          <ellipse cx="200" cy="112" rx="150" ry="80" fill="rgba(192,74,34,0.06)" stroke="rgba(192,74,34,0.15)" stroke-width="1"/>
+          <path d="M75 90 Q115 72 155 85 Q175 76 198 88 Q218 78 242 90 Q264 80 290 94 Q305 104 296 124 Q275 132 256 122 Q235 128 214 120 Q192 127 170 121 Q148 128 126 118 Q98 108 75 90Z" fill="rgba(192,74,34,0.2)" stroke="rgba(192,74,34,0.3)" stroke-width="0.5"/>
+          <circle cx="130" cy="104" r="5" fill="#c04a22" opacity="0.7"/>
+          <circle cx="198" cy="110" r="8" fill="#c04a22" opacity="0.5"/>
+          <circle cx="258" cy="104" r="4" fill="#c04a22" opacity="0.8"/>
+          <circle cx="170" cy="118" r="3" fill="#c04a22" opacity="0.6"/>
+          <circle cx="226" cy="116" r="6" fill="#c04a22" opacity="0.45"/>
+        </svg>
+      </div>
+      <div class="work-card-body">
+        <p class="work-card-tag">Maps · Editorial</p>
+        <h3 class="work-card-title">Global climate risk index — mapping series</h3>
+        <p class="work-card-desc">Multi-part data visualisation series communicating regional climate vulnerability to policy and general audiences.</p>
+      </div>
+      <div class="work-card-footer">
+        <span class="work-card-org">Earth.Org · 2022–2023</span>
+        <span class="work-card-arrow">↗</span>
+      </div>
+    </div>
+
+    <div class="work-card reveal">
+      <div class="work-card-thumb">
+        <svg viewBox="0 0 400 225" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="225" fill="#eceae6"/>
+          <rect x="30" y="25" width="340" height="175" rx="6" fill="white" stroke="#e4e1dc" stroke-width="1"/>
+          <rect x="30" y="25" width="340" height="28" rx="6" fill="#f4f2ef"/>
+          <rect x="30" y="39" width="340" height="14" fill="#f4f2ef"/>
+          <circle cx="50" cy="39" r="5" fill="#e4e1dc"/>
+          <circle cx="65" cy="39" r="5" fill="#e4e1dc"/>
+          <circle cx="80" cy="39" r="5" fill="#e4e1dc"/>
+          <rect x="50" y="68" width="130" height="14" rx="3" fill="#f4f2ef" stroke="#e4e1dc" stroke-width="0.5"/>
+          <rect x="200" y="68" width="130" height="14" rx="3" fill="#f4f2ef" stroke="#e4e1dc" stroke-width="0.5"/>
+          <rect x="50" y="98" width="280" height="58" rx="4" fill="rgba(192,74,34,0.05)" stroke="rgba(192,74,34,0.2)" stroke-width="1"/>
+          <text x="190" y="122" fill="#c04a22" font-family="sans-serif" font-size="22" text-anchor="middle" font-weight="700">4.2 Mt</text>
+          <text x="190" y="138" fill="#888580" font-family="sans-serif" font-size="7" text-anchor="middle" letter-spacing="0.8">CO₂ REDUCTION POTENTIAL</text>
+          <polyline points="50,178 90,168 130,162 170,153 210,144 255,135 295,125 340,114" stroke="#c04a22" stroke-width="1.5" fill="none"/>
+          <circle cx="340" cy="114" r="3" fill="#c04a22"/>
+        </svg>
+      </div>
+      <div class="work-card-body">
+        <p class="work-card-tag">Interactive · Web Tool</p>
+        <h3 class="work-card-title">Science-to-decision interactive tools</h3>
+        <p class="work-card-desc">Custom calculators and data tools that turn research outputs into decisions audiences can act on immediately.</p>
+      </div>
+      <div class="work-card-footer">
+        <span class="work-card-org">Everest Vantage · 2024–2025</span>
+        <span class="work-card-arrow">↗</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-header reveal">
+    <div>
+      <span class="section-tag">Services</span>
+      <h2 class="services-headline">What I do<br>for climate tech</h2>
+    </div>
+    <p class="services-sub">For founders between seed and Series B with strong science that needs to work harder commercially. Retainer or project-based.</p>
+  </div>
+  <div class="services-grid reveal">
+    <div class="service-card">
+      <p class="service-num">01</p>
+      <h3 class="service-name">Investor Narrative</h3>
+      <p class="service-desc">Translating your science into the language that makes investors understand why this is inevitable — and why now. Decks, memos, update emails.</p>
+    </div>
+    <div class="service-card">
+      <p class="service-num">02</p>
+      <h3 class="service-name">Data Visualisation</h3>
+      <p class="service-desc">Charts, maps, and interactives that make complex data legible to non-specialist audiences. Editorial quality, built for sharing.</p>
+    </div>
+    <div class="service-card">
+      <p class="service-num">03</p>
+      <h3 class="service-name">Thought Leadership</h3>
+      <p class="service-desc">Founder ghostwriting, opinion pieces, and editorial strategy. Getting your ideas into the rooms and publications that matter.</p>
+    </div>
+    <div class="service-card">
+      <p class="service-num">04</p>
+      <h3 class="service-name">Growth & Web Tools</h3>
+      <p class="service-desc">SEO strategy, interactive content, and AI-powered workflows that compound your communications over time.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="reveal">
+    <span class="section-tag">Contact</span>
+    <h2 class="contact-headline">Let's make your<br>science <span class="accent">earn</span></h2>
+    <p class="contact-body">If you're building something important in climate and need someone who can translate it — for investors, press, or customers — I'd like to hear about it.</p>
+    <div class="contact-links">
+      <a href="mailto:owen@getmulhern.com" class="contact-link">
+        <span class="contact-link-label">Email</span>
+        owen@getmulhern.com
+      </a>
+      <a href="https://linkedin.com/in/owen-mulhern-6a75a6147" class="contact-link" target="_blank">
+        <span class="contact-link-label">LinkedIn</span>
+        /in/owen-mulhern
+      </a>
+    </div>
+  </div>
+  <div class="reveal">
+    <div class="form-row">
+      <label class="form-label">Your name</label>
+      <input type="text" class="form-input" placeholder="Jane Smith">
+    </div>
+    <div class="form-row">
+      <label class="form-label">Email</label>
+      <input type="email" class="form-input" placeholder="jane@climatetech.com">
+    </div>
+    <div class="form-row">
+      <label class="form-label">What are you working on?</label>
+      <textarea class="form-textarea" placeholder="Tell me about your company and the challenge you're facing..."></textarea>
+    </div>
+    <button class="form-btn">Send message →</button>
+  </div>
+</section>
+
+<footer>
+  <span>© 2025 Owen Mulhern</span>
+  <span>Climate Communications · Ho Chi Minh City · <a href="https://linkedin.com/in/owen-mulhern-6a75a6147" target="_blank">LinkedIn</a></span>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 60);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  reveals.forEach(el => io.observe(el));
+</script>
+</body>
+</html>
