@@ -57,16 +57,17 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; display: flex; j
 .strip-val { font-family: 'Outfit', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--ink); letter-spacing: -0.03em; line-height: 1; margin-bottom: 0.2rem; }
 .strip-label { font-size: 0.7rem; color: var(--muted); line-height: 1.4; }
 
-/* ABOUT */
-.about { padding: 6rem 2.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; border-top: 1px solid var(--border); }
-.section-tag { display: inline-block; font-family: 'Outfit', sans-serif; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--rust); margin-bottom: 1.5rem; }
-.about-headline { font-family: 'Outfit', sans-serif; font-size: clamp(1.8rem, 2.8vw, 2.8rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 1.75rem; color: var(--ink); }
-.about-body { font-size: 0.95rem; font-weight: 300; color: var(--ink-soft); line-height: 1.85; margin-bottom: 1.1rem; }
-.about-cards { display: flex; flex-direction: column; gap: 0.75rem; }
-.about-card { background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 1.1rem 1.25rem; display: flex; align-items: flex-start; gap: 1rem; }
-.about-card-icon { width: 32px; height: 32px; border-radius: 8px; background: var(--rust-pale); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.85rem; }
-.about-card-label { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.15rem; }
-.about-card-val { font-family: 'Outfit', sans-serif; font-size: 0.88rem; font-weight: 500; color: var(--ink); }
+/* CREDENTIALS */
+.credentials { padding: 6rem 2.5rem; border-top: 1px solid var(--border); display: grid; grid-template-columns: 280px 1fr; gap: 6rem; align-items: start; }
+.section-tag { display: inline-block; font-family: 'Outfit', sans-serif; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--rust); margin-bottom: 1rem; }
+.credentials-desc { font-size: 0.95rem; font-weight: 300; color: var(--muted); line-height: 1.7; }
+.credentials-list { display: flex; flex-direction: column; }
+.cred-row { display: grid; grid-template-columns: 120px 1fr 1fr; gap: 2rem; align-items: baseline; padding: 1.5rem 0; border-bottom: 1px solid var(--border2); }
+.cred-row:first-child { border-top: 1px solid var(--border2); }
+.cred-period { font-family: 'Outfit', sans-serif; font-size: 0.7rem; font-weight: 500; color: var(--muted); letter-spacing: 0.02em; }
+.cred-title { font-family: 'Outfit', sans-serif; font-size: 0.95rem; font-weight: 600; color: var(--ink); letter-spacing: -0.01em; margin-bottom: 0.15rem; }
+.cred-org { font-size: 0.8rem; font-weight: 400; color: var(--rust); }
+.cred-detail { font-size: 0.82rem; font-weight: 300; color: var(--muted); line-height: 1.6; }
 
 /* WORK */
 .work { padding: 6rem 2.5rem; border-top: 1px solid var(--border); }
@@ -131,7 +132,9 @@ footer a:hover { color: var(--ink); }
   .hero { padding: 56px 1.5rem 0; }
   .hero-main { grid-template-columns: 1fr; padding: 3rem 0 2.5rem; }
   .hero-strip { grid-template-columns: 1fr 1fr; margin: 0 -1.5rem; padding: 0 1.5rem; }
-  .about { grid-template-columns: 1fr; padding: 4rem 1.5rem; gap: 3rem; }
+  .credentials { grid-template-columns: 1fr; padding: 4rem 1.5rem; gap: 2rem; }
+  .cred-row { grid-template-columns: 1fr; gap: 0.25rem; }
+  .cred-period { color: var(--rust); }
   .work { padding: 4rem 1.5rem; }
   .work-grid { grid-template-columns: 1fr; }
   .services { padding: 4rem 1.5rem; }
@@ -202,43 +205,58 @@ footer a:hover { color: var(--ink); }
   </div>
 </section>
 
-<section class="about" id="about">
-  <div class="reveal">
-    <span class="section-tag">About</span>
-    <h2 class="about-headline">The gap between great science and market traction</h2>
-    <p class="about-body">Most climate tech companies are sitting on genuinely important science. Very few have anyone who can turn it into the kind of narrative that moves investors, journalists, and customers to act.</p>
-    <p class="about-body">I close that gap. With a background spanning molecular medicine, data journalism, and growth strategy, I work at the intersection of scientific rigour and commercial communication.</p>
-    <p class="about-body">Based in Ho Chi Minh City. Working globally.</p>
+<section class="credentials" id="about">
+  <div class="credentials-intro reveal">
+    <span class="section-tag">Background</span>
+    <p class="credentials-desc">Science literacy meets commercial communication. Here's the thread.</p>
   </div>
-  <div class="about-cards reveal">
-    <div class="about-card">
-      <div class="about-card-icon">🎓</div>
-      <div>
-        <div class="about-card-label">Education</div>
-        <div class="about-card-val">MSc Molecular Medicine · Imperial College London</div>
+  <div class="credentials-list reveal">
+
+    <div class="cred-row">
+      <div class="cred-period">2024 — Now</div>
+      <div class="cred-main">
+        <div class="cred-title">Venture Advisor</div>
+        <div class="cred-org">Bouken Capital</div>
       </div>
+      <div class="cred-detail">Climate & deep tech deal flow. Founder outreach strategy and advisory pipeline.</div>
     </div>
-    <div class="about-card">
-      <div class="about-card-icon">🌍</div>
-      <div>
-        <div class="about-card-label">Former role</div>
-        <div class="about-card-val">Head of Data Visualisation · Earth.Org</div>
+
+    <div class="cred-row">
+      <div class="cred-period">2024 — Now</div>
+      <div class="cred-main">
+        <div class="cred-title">Freelance Consultant</div>
+        <div class="cred-org">Zest · HR SaaS</div>
       </div>
+      <div class="cred-detail">Science-backed content strategy and tool development for a French HR platform.</div>
     </div>
-    <div class="about-card">
-      <div class="about-card-icon">📈</div>
-      <div>
-        <div class="about-card-label">Growth experience</div>
-        <div class="about-card-val">Semrush · Verofax · KillB · 6k newsletter</div>
+
+    <div class="cred-row">
+      <div class="cred-period">2023 — 2024</div>
+      <div class="cred-main">
+        <div class="cred-title">Growth Manager</div>
+        <div class="cred-org">Semrush</div>
       </div>
+      <div class="cred-detail">Revived dormant newsletter to 6,000 active subscribers. SEO and content pipeline strategy.</div>
     </div>
-    <div class="about-card">
-      <div class="about-card-icon">💡</div>
-      <div>
-        <div class="about-card-label">Current</div>
-        <div class="about-card-val">Advisor · Bouken Capital · Science journalist</div>
+
+    <div class="cred-row">
+      <div class="cred-period">2021 — 2023</div>
+      <div class="cred-main">
+        <div class="cred-title">Head of Data Visualisation</div>
+        <div class="cred-org">Earth.Org</div>
       </div>
+      <div class="cred-detail">Led a team of cartographers, designers, and data scientists. Climate data journalism at scale.</div>
     </div>
+
+    <div class="cred-row">
+      <div class="cred-period">Education</div>
+      <div class="cred-main">
+        <div class="cred-title">MSc Molecular Medicine</div>
+        <div class="cred-org">Imperial College London</div>
+      </div>
+      <div class="cred-detail">Scientific rigour as a foundation. The reason the science always reads right.</div>
+    </div>
+
   </div>
 </section>
 
@@ -335,9 +353,9 @@ footer a:hover { color: var(--ink); }
     <h2 class="contact-headline">Let's make your<br>science <span class="accent">earn</span></h2>
     <p class="contact-body">If you're building something important in climate and need someone who can translate it — for investors, press, or customers — I'd like to hear about it.</p>
     <div class="contact-links">
-      <a href="mailto:owenhmulhern@gmail.com" class="contact-link">
+      <a href="/cdn-cgi/l/email-protection#422d35272c2a2f372e2a27302c02252f232b2e6c212d2f" class="contact-link">
         <span class="contact-link-label">Email</span>
-        owenhmulhern@gmail.com
+        <span class="__cf_email__" data-cfemail="bbd4ccded5d3d6ced7d3dec9d5fbdcd6dad2d795d8d4d6">[email&#160;protected]</span>
       </a>
       <a href="https://linkedin.com/in/owen-mulhern-6a75a6147" class="contact-link" target="_blank">
         <span class="contact-link-label">LinkedIn</span>
@@ -369,17 +387,7 @@ footer a:hover { color: var(--ink); }
   <span>Climate Communications · Ho Chi Minh City · <a href="https://linkedin.com/in/owen-mulhern-6a75a6147" target="_blank">LinkedIn</a></span>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   const reveals = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver((entries) => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('visible'), i * 60);
-        io.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.08 });
-  reveals.forEach(el => io.observe(el));
-</script>
-</body>
-</html>
+    entries.forEach((e,
