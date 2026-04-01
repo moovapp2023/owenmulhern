@@ -87,17 +87,16 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; display: flex; j
 .work-card-arrow { font-size: 0.8rem; color: var(--bg3); transition: color 0.15s, transform 0.15s; }
 .work-card:hover .work-card-arrow { color: var(--rust); transform: translate(2px,-2px); }
 
-/* SERVICES */
-.services { padding: 6rem 2.5rem; border-top: 1px solid var(--border); background: var(--white); }
-.services-header { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: end; margin-bottom: 3rem; }
-.services-headline { font-family: 'Outfit', sans-serif; font-size: clamp(1.8rem, 2.8vw, 2.8rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; color: var(--ink); }
-.services-sub { font-size: 0.92rem; font-weight: 300; color: var(--muted); line-height: 1.7; }
-.services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
-.service-card { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 1.75rem 1.5rem; transition: background 0.15s, border-color 0.15s; }
-.service-card:hover { background: var(--white); border-color: var(--rust); }
-.service-num { font-family: 'Outfit', sans-serif; font-size: 0.7rem; font-weight: 600; color: var(--rust); margin-bottom: 1.25rem; }
-.service-name { font-family: 'Outfit', sans-serif; font-size: 1rem; font-weight: 600; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 0.75rem; line-height: 1.25; }
-.service-desc { font-size: 0.82rem; font-weight: 300; color: var(--muted); line-height: 1.7; }
+/* WHAT I DO */
+.what-i-do { padding: 6rem 2.5rem; border-top: 1px solid var(--border); background: var(--bg2); }
+.what-header { margin-bottom: 4rem; }
+.what-title { font-family: 'Outfit', sans-serif; font-size: clamp(2.5rem, 5vw, 5rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.0; color: var(--ink); margin-top: 0.75rem; }
+.what-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--border); }
+.what-card { padding: 2.5rem 2rem 2.5rem 0; border-right: 1px solid var(--border); }
+.what-card:last-child { border-right: none; }
+.what-num { font-family: 'Outfit', sans-serif; font-size: 0.68rem; font-weight: 600; color: var(--rust); letter-spacing: 0.08em; display: block; margin-bottom: 1.5rem; }
+.what-name { font-family: 'Outfit', sans-serif; font-size: 1.4rem; font-weight: 700; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 1rem; line-height: 1.15; }
+.what-desc { font-size: 0.88rem; font-weight: 300; color: var(--muted); line-height: 1.7; }
 
 /* CONTACT */
 .contact { padding: 6rem 2.5rem; border-top: 1px solid var(--border); display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
@@ -132,9 +131,10 @@ footer a:hover { color: var(--ink); }
   .hero { padding: 56px 1.5rem 0; }
   .hero-main { grid-template-columns: 1fr; padding: 3rem 0 2.5rem; }
   .hero-strip { grid-template-columns: 1fr 1fr; margin: 0 -1.5rem; padding: 0 1.5rem; }
+  .what-grid { grid-template-columns: 1fr 1fr; }
+  .what-card { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); padding: 2rem 0; }
+  .what-i-do { padding: 4rem 1.5rem; }
   .credentials { grid-template-columns: 1fr; padding: 4rem 1.5rem; gap: 2rem; }
-  .cred-row { grid-template-columns: 1fr; gap: 0.25rem; }
-  .cred-period { color: var(--rust); }
   .work { padding: 4rem 1.5rem; }
   .work-grid { grid-template-columns: 1fr; }
   .services { padding: 4rem 1.5rem; }
@@ -180,7 +180,7 @@ footer a:hover { color: var(--ink); }
           <span class="viz-card-title">Emission reduction options by speed &amp; cost savings</span>
           <span class="viz-card-tag">Data viz</span>
         </div>
-        <img src="viz-drawdown.jpg" alt="Emission reduction options" style="width:100%;display:block;">
+        <img src="viz-drawdown.jpg" alt="Emission reduction options" style="width:100%;max-height:360px;object-fit:cover;object-position:top;display:block;">
         <div class="viz-card-caption">Project Drawdown solution analysis · 2025</div>
       </div>
     </div>
@@ -205,58 +205,32 @@ footer a:hover { color: var(--ink); }
   </div>
 </section>
 
-<section class="credentials" id="about">
-  <div class="credentials-intro reveal">
-    <span class="section-tag">Background</span>
-    <p class="credentials-desc">Science literacy meets commercial communication. Here's the thread.</p>
+<section class="what-i-do" id="services">
+  <div class="what-header reveal">
+    <span class="section-tag">What I do</span>
+    <h2 class="what-title">Four things.<br>Done properly.</h2>
   </div>
-  <div class="credentials-list reveal">
-
-    <div class="cred-row">
-      <div class="cred-period">2024 — Now</div>
-      <div class="cred-main">
-        <div class="cred-title">Venture Advisor</div>
-        <div class="cred-org">Bouken Capital</div>
-      </div>
-      <div class="cred-detail">Climate & deep tech deal flow. Founder outreach strategy and advisory pipeline.</div>
+  <div class="what-grid reveal">
+    <div class="what-card">
+      <span class="what-num">01</span>
+      <h3 class="what-name">Investor Narrative</h3>
+      <p class="what-desc">Turn your science into the story that makes investors say yes. Decks, memos, update emails.</p>
     </div>
-
-    <div class="cred-row">
-      <div class="cred-period">2024 — Now</div>
-      <div class="cred-main">
-        <div class="cred-title">Freelance Consultant</div>
-        <div class="cred-org">Zest · HR SaaS</div>
-      </div>
-      <div class="cred-detail">Science-backed content strategy and tool development for a French HR platform.</div>
+    <div class="what-card">
+      <span class="what-num">02</span>
+      <h3 class="what-name">Data Visualisation</h3>
+      <p class="what-desc">Charts, maps, and interactives that make complex data impossible to misread.</p>
     </div>
-
-    <div class="cred-row">
-      <div class="cred-period">2023 — 2024</div>
-      <div class="cred-main">
-        <div class="cred-title">Growth Manager</div>
-        <div class="cred-org">Semrush</div>
-      </div>
-      <div class="cred-detail">Revived dormant newsletter to 6,000 active subscribers. SEO and content pipeline strategy.</div>
+    <div class="what-card">
+      <span class="what-num">03</span>
+      <h3 class="what-name">Thought Leadership</h3>
+      <p class="what-desc">Your ideas, in print. Ghostwritten opinion pieces and editorial strategy that opens doors.</p>
     </div>
-
-    <div class="cred-row">
-      <div class="cred-period">2021 — 2023</div>
-      <div class="cred-main">
-        <div class="cred-title">Head of Data Visualisation</div>
-        <div class="cred-org">Earth.Org</div>
-      </div>
-      <div class="cred-detail">Led a team of cartographers, designers, and data scientists. Climate data journalism at scale.</div>
+    <div class="what-card">
+      <span class="what-num">04</span>
+      <h3 class="what-name">Growth & Web Tools</h3>
+      <p class="what-desc">SEO, interactive content, AI workflows. Communications that compound.</p>
     </div>
-
-    <div class="cred-row">
-      <div class="cred-period">Education</div>
-      <div class="cred-main">
-        <div class="cred-title">MSc Molecular Medicine</div>
-        <div class="cred-org">Imperial College London</div>
-      </div>
-      <div class="cred-detail">Scientific rigour as a foundation. The reason the science always reads right.</div>
-    </div>
-
   </div>
 </section>
 
@@ -315,34 +289,51 @@ footer a:hover { color: var(--ink); }
   </div>
 </section>
 
-<section class="services" id="services">
-  <div class="services-header reveal">
-    <div>
-      <span class="section-tag">Services</span>
-      <h2 class="services-headline">What I do<br>for climate tech</h2>
-    </div>
-    <p class="services-sub">For founders between seed and Series B with strong science that needs to work harder commercially. Retainer or project-based.</p>
+<section class="credentials" id="about">
+  <div class="credentials-intro reveal">
+    <span class="section-tag">Background</span>
+    <p class="credentials-desc">Science literacy meets commercial communication. Here's the thread.</p>
   </div>
-  <div class="services-grid reveal">
-    <div class="service-card">
-      <p class="service-num">01</p>
-      <h3 class="service-name">Investor Narrative</h3>
-      <p class="service-desc">Translating your science into the language that makes investors understand why this is inevitable — and why now.</p>
+  <div class="credentials-list reveal">
+    <div class="cred-row">
+      <div class="cred-period">2024 — Now</div>
+      <div class="cred-main">
+        <div class="cred-title">Venture Advisor</div>
+        <div class="cred-org">Bouken Capital</div>
+      </div>
+      <div class="cred-detail">Climate & deep tech deal flow. Founder outreach strategy and advisory pipeline.</div>
     </div>
-    <div class="service-card">
-      <p class="service-num">02</p>
-      <h3 class="service-name">Data Visualisation</h3>
-      <p class="service-desc">Charts, maps, and interactives that make complex data legible to non-specialist audiences. Editorial quality, built for sharing.</p>
+    <div class="cred-row">
+      <div class="cred-period">2024 — Now</div>
+      <div class="cred-main">
+        <div class="cred-title">Freelance Consultant</div>
+        <div class="cred-org">Zest · HR SaaS</div>
+      </div>
+      <div class="cred-detail">Science-backed content strategy and tool development for a French HR platform.</div>
     </div>
-    <div class="service-card">
-      <p class="service-num">03</p>
-      <h3 class="service-name">Thought Leadership</h3>
-      <p class="service-desc">Founder ghostwriting, opinion pieces, and editorial strategy. Getting your ideas into the rooms and publications that matter.</p>
+    <div class="cred-row">
+      <div class="cred-period">2023 — 2024</div>
+      <div class="cred-main">
+        <div class="cred-title">Growth Manager</div>
+        <div class="cred-org">Semrush</div>
+      </div>
+      <div class="cred-detail">Revived dormant newsletter to 6,000 active subscribers. SEO and content pipeline strategy.</div>
     </div>
-    <div class="service-card">
-      <p class="service-num">04</p>
-      <h3 class="service-name">Growth & Web Tools</h3>
-      <p class="service-desc">SEO strategy, interactive content, and AI-powered workflows that compound your communications over time.</p>
+    <div class="cred-row">
+      <div class="cred-period">2021 — 2023</div>
+      <div class="cred-main">
+        <div class="cred-title">Head of Data Visualisation</div>
+        <div class="cred-org">Earth.Org</div>
+      </div>
+      <div class="cred-detail">Led a team of cartographers, designers, and data scientists. Climate data journalism at scale.</div>
+    </div>
+    <div class="cred-row">
+      <div class="cred-period">Education</div>
+      <div class="cred-main">
+        <div class="cred-title">MSc Molecular Medicine</div>
+        <div class="cred-org">Imperial College London</div>
+      </div>
+      <div class="cred-detail">Scientific rigour as a foundation. The reason the science always reads right.</div>
     </div>
   </div>
 </section>
@@ -387,7 +378,17 @@ footer a:hover { color: var(--ink); }
   <span>Climate Communications · Ho Chi Minh City · <a href="https://linkedin.com/in/owen-mulhern-6a75a6147" target="_blank">LinkedIn</a></span>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   const reveals = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver((entries) => {
-    entries.forEach((e,
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 60);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  reveals.forEach(el => io.observe(el));
+</script>
+</body>
+</html>
