@@ -26,20 +26,31 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; display: flex; j
 
 /* HERO */
 .hero { padding: 56px 2.5rem 0; min-height: 100vh; display: flex; flex-direction: column; }
-.hero-main { flex: 1; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 3rem; align-items: center; padding: 5rem 0 4rem; }
+.hero-main {
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 1.5rem; /* was 3rem → too airy */
+}
 .hero-label { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--white); border: 1px solid var(--border); border-radius: 100px; padding: 0.3rem 0.85rem 0.3rem 0.5rem; margin-bottom: 2.5rem; opacity: 0; animation: fadeUp 0.5s ease forwards 0.1s; }
 .hero-label-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--rust); }
 .hero-label-text { font-family: 'Outfit', sans-serif; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); }
 .hero-title { font-family: 'Outfit', sans-serif; font-size: clamp(2.8rem, 5vw, 5rem); font-weight: 700; line-height: 1.0; letter-spacing: -0.03em; color: var(--ink); margin-bottom: 2rem; opacity: 0; animation: fadeUp 0.6s ease forwards 0.2s; }
 .hero-title .accent { color: var(--rust); }
-.hero-sub { font-size: 1rem; font-weight: 300; color: var(--ink-soft); line-height: 1.75; max-width: 420px; margin-bottom: 2.5rem; opacity: 0; animation: fadeUp 0.6s ease forwards 0.35s; }
+.hero-sub {
+  max-width: 480px;
+}
 .hero-actions { display: flex; align-items: center; gap: 1rem; opacity: 0; animation: fadeUp 0.5s ease forwards 0.5s; }
 .btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--ink); color: var(--white); padding: 0.75rem 1.5rem; border-radius: 100px; font-family: 'Outfit', sans-serif; font-size: 0.82rem; font-weight: 500; text-decoration: none; transition: background 0.15s, transform 0.15s; }
 .btn-primary:hover { background: var(--rust); transform: translateY(-1px); }
 .btn-ghost { color: var(--muted); font-size: 0.82rem; text-decoration: none; transition: color 0.15s; }
 .btn-ghost:hover { color: var(--ink); }
-.hero-right { opacity: 0; animation: fadeUp 0.7s ease forwards 0.4s; }
-.hero-viz-card { background: var(--white); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.04), 0 8px 32px rgba(0,0,0,0.06); }
+.hero-right {
+  display: flex;
+  justify-content: flex-start;
+}
+.hero-viz-card {
+  width: 100%;
+  max-width: 420px; /* keeps it intentionally modest */
+}
 .viz-card-header { padding: 1rem 1.25rem; border-bottom: 1px solid var(--border2); display: flex; align-items: center; justify-content: space-between; }
 .viz-card-title { font-family: 'Outfit', sans-serif; font-size: 0.75rem; font-weight: 600; color: var(--ink); }
 .viz-card-tag { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--rust); background: var(--rust-pale); padding: 0.2rem 0.6rem; border-radius: 100px; }
